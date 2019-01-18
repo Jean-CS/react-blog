@@ -1,3 +1,5 @@
+![](http://i66.tinypic.com/24gvpxz.png)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
