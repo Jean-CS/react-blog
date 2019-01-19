@@ -1,4 +1,17 @@
+# Redux Lifecycle
+
 ![](http://i66.tinypic.com/24gvpxz.png)
+
+# Redux Middleware
+
+![](http://i66.tinypic.com/hswf2u.png)
+
+![](http://i67.tinypic.com/aln8k8.png)
+
+# Redux-thunk
+
+![](http://i68.tinypic.com/2lk8s47.png)
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
