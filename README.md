@@ -95,6 +95,10 @@ The difference between **Bad** and **Good** is that:
 
 Everytime you want to pass state from redux to react, you need to `mapStateToProps` and pass it off as an argument to `connect`
 
+# Memoization
+
+Commit #: edfff32138a4fdc7bfdfed17edfd685ef87a67fe
+
 ---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
