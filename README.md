@@ -91,7 +91,9 @@ The difference between **Bad** and **Good** is that:
 - All methods in **Good** return a new object/array;
 - And method in **Bad** return the same array but mutated.
 
+# Passing state from redux to react
 
+Everytime you want to pass state from redux to react, you need to `mapStateToProps` and pass it off as an argument to `connect`
 
 ---
 
