@@ -12,6 +12,88 @@
 
 ![](http://i68.tinypic.com/2lk8s47.png)
 
+# Rules of Reducers
+
+![](http://i65.tinypic.com/33xe8w7.png)
+
+## Must return _any_ value besides 'undefined'
+
+Basically, you should **always** return valid objects/arrays/values **or** empty objects `{}`, empty arrays `[]` or `null` values.
+
+As such, the first argument to a reducer should have a default parameter , like so:
+
+```javascript
+const exampleReducer(exampleValue = null, action) {
+    if (action.type === 'EXAMPLE_ACTION')
+        return action.payload
+
+    return exampleValue;
+}
+```
+
+## Produces 'state', or data to be used inside of your app using only previous state and the action
+
+When a reducer gets called for the first time, it's default 'state' value will be either `[]`, `{}`, or `null`.
+
+As the action gets processed, it will generate a new piece of state from `action.payload`
+And all subsequent calls to the reducer will have the previous piece of state. 
+
+### First time a reducer is called
+
+![](http://i64.tinypic.com/ab45f7.png)
+
+### Second time a reducer is called
+
+![](http://i65.tinypic.com/jux2ko.png)
+
+## Must not 'reach out of itself' to decide what value to return (reducers are pure functions)
+
+The reducer is a pure function that takes the previous state and an action, and returns the next state.
+
+Pure functions only return values based on its arguments.
+
+A pure function should **never** make an API request, or call another function to determine its return value.
+
+## Do not mutate its 'input' state argument
+
+This refers to: If you mutate the input state argument `const exampleReducer(state, action) => state.name = 'Mutation'`, redux will receive this new state, it will compare it to the old state and it will return false. The returned state is not different from the previous one, and as such, no rerenders should be made. Even if you make changes to the state (add or delete from it), the comparison between `oldState === newState` will still return false. 
+
+Why?
+
+Because objects are passed by reference in javascript.
+
+> This is an example of updating a property on an object
+
+```javascript
+const milk = { type: 'milk' }
+const chocolateMilk = milk
+// 'chocolateMilk' points to a reference to 'milk', in memory
+chocolateMilk.flavour = 'chocolate'
+// since 'chocolateMilk' points to milk, you are essentially changing 'milk' here
+
+console.log(milk)
+// prints: {type: "milk", flavour: "chocolate"}
+console.log(chocolateMilk)
+// prints: {type: "milk", flavour: "chocolate"}
+console.log(milk === chocolateMilk)
+// prints: true
+```
+
+Basically, when you do this `const chocolateMilk = milk`, you can treat `chocolateMilk` as if it was an alias to `milk`. Any changes you make to `chocolateMilk` will reflect back into `milk`
+
+https://alistapart.com/article/why-mutation-can-be-scary
+
+## Safe State Updates in Reducers
+
+![](http://i67.tinypic.com/28rh3yq.png)
+
+The difference between **Bad** and **Good** is that:
+- All methods in **Good** return a new object/array;
+- And method in **Bad** return the same array but mutated.
+
+
+
+---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
